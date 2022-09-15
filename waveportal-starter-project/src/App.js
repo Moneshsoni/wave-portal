@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {ethers} from "ethers";
 import "./App.css";
  
 const App = () => {
@@ -39,10 +40,8 @@ const App = () => {
       if (!ethereum) {
         alert("Get MetaMask!");
         return;
-      }
- 
+      } 
       const accounts = await ethereum.request({ method: "eth_requestAccounts" });
- 
       console.log("Connected", accounts[0]);
       setCurrentAccount(accounts[0]);
     } catch (error) {
@@ -54,6 +53,21 @@ const App = () => {
     checkIfWalletIsConnected();
   }, [])
  
+  const wave = async  ()=>{
+    try {
+      const {ethereum} = window;
+      if(ethereum){
+        const provider =  new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const  wavePortalContract = new ethers.Contract(contractAddress, contractABI,signer);
+      }
+      
+    } catch (error) {
+      console.log("Error found on! ",error);
+      
+    }
+
+  }
   return (
     <div className="mainContainer">
       <div className="dataContainer">

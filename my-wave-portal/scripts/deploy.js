@@ -10,6 +10,8 @@ const main = async () => {
   await waveContract.deployed();
  
   console.log("waveContract deployed to:", waveContract.address);
+  // let waveTxn =  waveContract.wave("Hii I am waving on my contract");
+  // await waveTxn.wait();
  
 
 };

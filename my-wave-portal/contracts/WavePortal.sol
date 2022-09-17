@@ -20,7 +20,7 @@ contract WavePortal {
  
     function wave(string memory _message) public {
         totalWaves += 1;
-        console.log("%s has waved!", msg.sender);
+        console.log("%s has waved!", msg.sender,_message);
 
         waves.push(Wave(msg.sender,_message, block.timestamp));
         console.log("Recived a new messages: %s",_message);
